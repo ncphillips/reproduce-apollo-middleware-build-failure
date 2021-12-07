@@ -1,10 +1,12 @@
-import ApolloClient from 'apollo-boost';
-import { NextResponse } from 'next/server'
+import { NextResponse } from "next/server"
+
+import { ApolloClient, InMemoryCache } from "@apollo/client"
 
 export function middleware() {
-  const client = new ApolloClient({ uri: 'https://nx9zvp49q7.lp.gql.zone/graphql' });
+  const client = new ApolloClient({
+    uri: "https://nx9zvp49q7.lp.gql.zone/graphql",
+    cache: new InMemoryCache(),
+  })
 
-  console.log({ client })
- 
   return NextResponse.next()
 }
